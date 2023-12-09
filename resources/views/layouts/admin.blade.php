@@ -4,14 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Kaila Bakery - Admin Dashboard</title>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('template/admin/dist/assets/css/bootstrap.css') }}">
 
-    <link rel="stylesheet"
-        href="{{ asset('template/admin/dist/assets/vendors/perfect-scrollbar/perfect-scrollbar.css') }}">
+    <link rel="stylesheet" href="{{ asset('template/admin/dist/assets/vendors/iconly/bold.css') }}">
+    <link rel="stylesheet" href="{{ asset('template/admin/dist/assets/vendors/simple-datatables/style.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('template/admin/dist/assets/vendors/perfect-scrollbar/perfect-scrollbar.css') }}">
     <link rel="stylesheet" href="{{ asset('template/admin/dist/assets/vendors/bootstrap-icons/bootstrap-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('template/admin/dist/assets/css/app.css') }}">
     <link rel="shortcut icon" href="{{ asset('template/admin/dist/assets/images/favicon.svg" type="image/x-icon') }}">
@@ -52,10 +55,13 @@
                             </a>
                             <ul class="submenu ">
                                 <li class="submenu-item ">
-                                    <a href="component-alert.html">Beranda</a>
+                                    <a href="{{ route('dashboard.admin.slider') }}">Slider</a>
                                 </li>
                                 <li class="submenu-item ">
-                                    <a href="component-badge.html">Tentang Kami</a>
+                                    <a href="{{ route('dashboard.admin.banner') }}">Banner</a>
+                                </li>
+                                <li class="submenu-item ">
+                                    <a href="{{ route('dashboard.admin.about') }}">Tentang Kami</a>
                                 </li>
                                 <li class="submenu-item ">
                                     <a href="component-breadcrumb.html">Kontak</a>
@@ -200,8 +206,18 @@
     </div>
     <script src="{{ asset('template/admin/dist/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
     <script src="{{ asset('template/admin/dist/assets/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('template/admin/dist/assets/vendors/apexcharts/apexcharts.js') }}"></script>
+    <script src="{{ asset('template/admin/dist/assets/js/pages/dashboard.js') }}"></script>
+    <script src="{{ asset('template/admin/dist/assets/vendors/simple-datatables/simple-datatables.js') }}"></script>
+    <script>
+        let sliderTable = document.querySelector('#slider-table');
+        let dataTable = new simpleDatatables.DataTable(sliderTable);
+    </script>
 
     <script src="{{ asset('template/admin/dist/assets/js/main.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+    @stack('scripts')
 </body>
 
 </html>

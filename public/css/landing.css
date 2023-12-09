@@ -1,0 +1,13 @@
+#login-card {
+    padding: 36px;
+    margin: 64px;
+    display: flex;
+    justify-content: center;
+}
+
+#login-card form {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

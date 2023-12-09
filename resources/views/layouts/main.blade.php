@@ -40,6 +40,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('template/home/css/util.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('template/home/css/main.css') }}">
     <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/landing.css') }}">
 </head>
 
 <body class="animsition">
@@ -60,9 +61,15 @@
                             Bantuan & FAQs
                         </a>
 
-                        <a href="#" class="flex-c-m trans-04 p-lr-25">
-                            Akun Ku
+                        @if (Auth::check()) 
+                        <a href="{{ route('logout') }}" class="flex-c-m trans-04 p-lr-25">
+                            Logout
                         </a>
+                        @else 
+                        <a href="{{ route('login') }}" class="flex-c-m trans-04 p-lr-25">
+                            Masuk
+                        </a>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -173,8 +180,8 @@
                             Bantuan & FAQs
                         </a>
 
-                        <a href="#" class="flex-c-m p-lr-10 trans-04">
-                            Akun
+                        <a href="{{ route('login') }}" class="flex-c-m p-lr-10 trans-04">
+                            Masuk
                         </a>
                     </div>
                 </li>
